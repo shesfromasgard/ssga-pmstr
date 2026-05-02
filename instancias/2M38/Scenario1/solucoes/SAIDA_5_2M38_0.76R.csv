@@ -1,0 +1,41 @@
+4121.71 18.00 120.85 66494
+
+==== RESULTADO DA EXECUÇÃO ====
+Makespan inicial: 4121.71
+Melhor makespan: 18.00
+Tempo de execução (s): 120.85
+Total de iterações: 66494
+Razão de parada: MAX_VOID
+Melhor iteração: 16494
+Iterações sem melhoria: 50000
+
+==== Estatísticas SSGA ====
+Filhos gerados: 132988
+Rejeitados por pior absoluto (childFit > worst): 85102
+Rejeitados por serem inválidos: 1978
+Sem candidatos piores para substituir (defensivo): 0
+Inseridos na população: 45908
+
+==== Busca Local (médias) ====
+swap2: n=4063 avg_us=28183.43 melhoras=1387 ganho_total=94490168270
+insertion: n=0 avg_us=0.00 melhoras=0 ganho_total=0
+opt2: n=0 avg_us=0.00 melhoras=0 ganho_total=0
+Melhor (por ganho_total): swap2
+
+==== Parametros do Algoritmo ====
+Algoritmo: SSGA (steady-state)
+Tamanho da população: 570
+Prob. mutação por posição (swap): 0.03
+Máximo sem melhoria (MAX_VOID): 50000
+Razão de parada: MAX_VOID
+
+==== Parâmetros da instância ====
+Maquinas: 2
+Operacoes: 38
+Ferramentas: 29
+Capacidade Magazine: 80
+
+==== Solução ====
+Sequência de tarefas: 1|1 1|2 9|1 10|1 13|1 6|1 30|1 5|1 10|2 16|1 15|1 13|2 18|1 30|2 20|1 14|2 19|1 25|1 28|1 24|1 23|1 27|1 29|1 proximo
+2|1 4|1 3|1 8|1 7|1 12|1 31|1 11|1 14|1 17|1 8|2 21|1 20|2 26|1 22|1 proximo
+

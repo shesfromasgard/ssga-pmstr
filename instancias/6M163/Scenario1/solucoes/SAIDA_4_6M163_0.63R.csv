@@ -1,0 +1,45 @@
+9558.02 65.00 1089.45 1093015
+
+==== RESULTADO DA EXECUÇÃO ====
+Makespan inicial: 9558.02
+Melhor makespan: 65.00
+Tempo de execução (s): 1089.45
+Total de iterações: 1093015
+Razão de parada: MAX_VOID
+Melhor iteração: 998015
+Iterações sem melhoria: 95000
+
+==== Estatísticas SSGA ====
+Filhos gerados: 2186030
+Rejeitados por pior absoluto (childFit > worst): 2057808
+Rejeitados por serem inválidos: 11745
+Sem candidatos piores para substituir (defensivo): 0
+Inseridos na população: 116477
+
+==== Busca Local (médias) ====
+swap2: n=0 avg_us=0.00 melhoras=0 ganho_total=0
+insertion: n=0 avg_us=0.00 melhoras=0 ganho_total=0
+opt2: n=0 avg_us=0.00 melhoras=0 ganho_total=0
+Melhor (por ganho_total): EMPATE
+
+==== Parametros do Algoritmo ====
+Algoritmo: SSGA (steady-state)
+Tamanho da população: 2445
+Prob. mutação por posição (swap): 0.03
+Máximo sem melhoria (MAX_VOID): 95000
+Razão de parada: MAX_VOID
+
+==== Parâmetros da instância ====
+Maquinas: 6
+Operacoes: 163
+Ferramentas: 102
+Capacidade Magazine: 80
+
+==== Solução ====
+Sequência de tarefas: 48|1 57|1 5|1 41|1 152|1 45|1 36|1 145|1 42|1 32|1 37|1 30|1 96|1 73|1 146|1 83|1 72|1 56|1 61|1 74|1 153|1 76|1 49|1 81|1 68|1 39|1 53|1 70|1 69|1 75|1 43|1 47|1 104|1 60|1 77|1 91|1 84|1 95|1 110|1 135|1 107|1 121|1 122|1 134|1 78|1 102|1 136|1 90|1 151|1 154|1 98|1 99|1 137|1 161|1 143|1 100|1 120|1 132|1 101|1 proximo
+4|1 22|1 25|1 54|1 35|1 66|1 150|1 149|1 62|1 63|1 111|1 147|1 71|1 106|1 138|1 144|1 124|1 123|1 proximo
+27|1 8|1 14|1 19|1 17|1 18|1 2|1 1|1 51|1 97|1 50|1 118|1 108|1 109|1 156|1 127|1 155|1 160|1 126|1 128|1 119|1 139|1 125|1 proximo
+12|1 21|1 10|1 64|1 33|1 13|1 65|1 67|1 86|1 114|1 116|1 141|1 133|1 142|1 103|1 85|1 145|2 140|1 146|2 proximo
+40|1 31|1 34|1 58|1 55|1 158|1 52|1 157|1 115|1 87|1 82|1 113|1 130|1 131|1 proximo
+16|1 23|1 11|1 7|1 3|1 6|1 24|1 28|1 26|1 20|1 9|1 29|1 38|1 59|1 46|1 15|1 92|1 80|1 79|1 44|1 112|1 94|1 89|1 88|1 93|1 117|1 148|1 105|1 159|1 129|1 proximo
+
