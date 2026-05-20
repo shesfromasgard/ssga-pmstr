@@ -8,6 +8,6 @@ Para compilar, utilize o comando "make" (certifique-se que o pacote build-essent
   nohup ./run {pasta_com_suas_instancias} {número_de_execuçôes_independentes_por_instância} &
 ```
 
-Qualquer dúvida ou pergunta podem ser enviados para o e-mail [lauracsrocha0@gmail.com](mailto:lauracsrocha0@gmail.com).
+Qualquer dúvida ou pergunta podem ser enviados para o e-mail [anaclpereirasouza@gmail.com](mailto:anaclpereirasouza@gmail.com).
 
 Observação: este código funciona somente em distribuições Linux e é originalmente compilado com gcc14.
