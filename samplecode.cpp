@@ -62,37 +62,28 @@ int parseHeaderValue(string line) {
     return value;
 }
 
-int main(int argc, char* argv[]) {
-	if (argc < 2) {
-		std::cerr << "Uso: ./samplecode <arquivo_saida> < <instancia.csv>" << std::endl;
+int main(std::string filename) {
+	if (filename.empty()) {
+		std::cerr << "Arquivo de instancia vazio." << std::endl;
 		return 1;
 	}
 
-    ios_base::sync_with_stdio(false);
-    cin.imbue(locale("C"));
+	ios_base::sync_with_stdio(false);
+
+	ifstream fin(filename);
+	if (!fin.is_open()) {
+		std::cerr << "Nao foi possivel abrir arquivo de instancia: " << filename << std::endl;
+		return 1;
+	}
+	fin.imbue(locale("C"));
 
     string line;
 
-    if (getline(cin, line))
-        o = parseHeaderValue(line);
-    if (getline(cin, line))
-        m = parseHeaderValue(line);
-    if (getline(cin, line))
-        t = parseHeaderValue(line);
-    if (getline(cin, line))
-        c = parseHeaderValue(line);
-	maquina.assign(m, vector<Operation>());
-
-    getline(cin, line);
-    getline(cin, line);
-
-    int i = 0;
-    int operacao_global = 0;
-    map<int, map<int, int>> controleOp;
-
-    fileSolution.open(argv[1]);
+	// Saída automática baseada no nome da instância
+	string outFile = filename + ".out";
+	fileSolution.open(outFile);
 	if (!fileSolution.is_open()) {
-		std::cerr << "Nao foi possivel abrir arquivo de saida: " << argv[1] << std::endl;
+		std::cerr << "Nao foi possivel abrir arquivo de saida: " << outFile << std::endl;
 		return 1;
 	}
 
@@ -101,7 +92,25 @@ int main(int argc, char* argv[]) {
 	fileSolution.setf(std::ios::fixed);
 	fileSolution << std::setprecision(2);
 
-    while (getline(cin, line) && !line.empty()) {
+    if (getline(fin, line))
+        o = parseHeaderValue(line);
+    if (getline(fin, line))
+        m = parseHeaderValue(line);
+    if (getline(fin, line))
+        t = parseHeaderValue(line);
+    if (getline(fin, line))
+        c = parseHeaderValue(line);
+	maquina.assign(m, vector<Operation>());
+	vetOperacao.clear();
+
+    getline(fin, line);
+    getline(fin, line);
+
+    int i = 0;
+    int operacao_global = 0;
+    map<int, map<int, int>> controleOp;
+
+    while (getline(fin, line) && !line.empty()) {
         replace(line.begin(), line.end(), ',', ' ');
         stringstream ss(line);
         ss.imbue(locale("C"));
@@ -111,8 +120,7 @@ int main(int argc, char* argv[]) {
 
         ss >> idJob >> idOp >> releaseTime >> processingTime >> dueDate >> toolSetId >> toolSetSize;
 
-        if (ss)
-        {
+        if (ss) {
             Operation op(i, idJob, idOp, toolSetId - 1, toolSetSize, processingTime, dueDate, releaseTime);
             vetOperacao.push_back(op);
             controleOp[idJob][idOp] = 0;
@@ -120,24 +128,7 @@ int main(int argc, char* argv[]) {
         }
     }
 
-	vector<string> argumentos(argv + 1, argv + argc);
-
-	for(int i = 0; i < argumentos.size(); ++i) {
-		if(argumentos[i] == "--p")
-			POP_SIZE = o * stoi(argumentos[++i]);
-		else if(argumentos[i] == "--pm")
-			MUT_GENE_PROB = stof(argumentos[++i]);
-		else if(argumentos[i] == "--ps")
-			INTENS_PROB = stof(argumentos[++i]);
-		else if(argumentos[i] == "--ts")
-			TWO_SWAP = stoi(argumentos[++i]);
-		else if(argumentos[i] == "--tp")
-			TWO_OPT = stoi(argumentos[++i]);
-		else if(argumentos[i] == "--is")
-			INSERTION = stoi(argumentos[++i]);
-		else if(argumentos[i] == "--iv")
-			MAX_VOID= stoi(argumentos[++i]);
-	}
+    // Sem args/flags: usa os parâmetros globais default (ou setados no código).
 
     map<int, double> tempo_final;
     vector<double> tardiness_maq;
@@ -158,7 +149,7 @@ int main(int argc, char* argv[]) {
 	SSGA ssga(chromosome_size, populacao, MUT_GENE_PROB, INTENS_PROB, TWO_SWAP, INSERTION, TWO_OPT, 7200.0, RNG_SEED, decoder);
 	cout.setf(std::ios::fixed);
 	cout << std::setprecision(6);
-	cout << "[RUN] outFile='" << argv[1] << "' seed=" << RNG_SEED << " o=" << o << " m=" << m << " t=" << t << " c=" << c << std::endl;
+	cout << "[RUN] outFile='" << outFile << "' seed=" << RNG_SEED << " o=" << o << " m=" << m << " t=" << t << " c=" << c << std::endl;
 	if (progressDebugEnabled()) {
 		cout << "[RUN] debug: printing both currentBest(ssga) and globalBest(best)" << std::endl;
 	}

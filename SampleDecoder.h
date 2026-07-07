@@ -37,8 +37,8 @@ public:
 			sort(ranking[i].begin(), ranking[i].end());
 
 		for(int i = 0; i < m; ++i) {
-			for(auto& slaPorra : ranking[i]) {
-				maquina[i].push_back(vetOperacao[slaPorra.second]);
+			for(auto& var : ranking[i]) {
+				maquina[i].push_back(vetOperacao[var.second]);
 			}
 		}
 
@@ -100,15 +100,15 @@ public:
 			controle[ops[i].idJob].push_back(pair<int, int>(ops[i].idOp, i));
 		}
 		
-		for(auto& slaPorra : controle)
-			sort(slaPorra.begin(), slaPorra.end());
+		for(auto& var : controle)
+			sort(var.begin(), var.end());
 		
 		for(int i = 0; i <= maxJob; ++i) {
 			vector<int> lugar;
 			vector<Operation> banco;
-			for(auto& slaPorra : controle[i]) {
-				lugar.push_back(slaPorra.second);
-				banco.push_back(ops[slaPorra.second]);
+			for(auto& var : controle[i]) {
+				lugar.push_back(var.second);
+				banco.push_back(ops[var.second]);
 			}
 			if (lugar.size() <= 1)
 				continue;
