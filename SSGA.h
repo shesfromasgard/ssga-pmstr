@@ -109,6 +109,10 @@ public:
 		unsigned pa = tournamentSelect();
 		unsigned pb = tournamentSelect();
 
+		while(pb == pa) {
+			pb = tournamentSelect();
+		}
+
 		std::vector<double> childA(n);
 		std::vector<double> childB(n);
 		for (unsigned g = 0; g < n; ++g) {
@@ -258,13 +262,19 @@ private:
 		std::uniform_int_distribution<unsigned> pick(0, p - 1);
 		unsigned a = pick(rng);
 		unsigned b = pick(rng);
+
+		while(b == a) {
+			b = pick(rng);
+		}
+
 		return (fit[b] < fit[a]) ? b : a;
 	}
 
 	void mutate(std::vector<double>& x) {
+		std::uniform_int_distribution<int> disInteger(0, m - 1);
 		for (unsigned g = 0; g < n; ++g) {
 			if (dist01(rng) < mutProb) {
-				x[g] = dist01(rng);
+				x[g] = dist01(rng) + disInteger(rng);
 			}
 		}
 	}

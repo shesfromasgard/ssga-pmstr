@@ -62,25 +62,24 @@ int parseHeaderValue(string line) {
     return value;
 }
 
-int main(std::string filename) {
-	if (filename.empty()) {
-		std::cerr << "Arquivo de instancia vazio." << std::endl;
+int main(int argc, char *argv[]) {
+	if (argc < 2 || argv[1] == nullptr || std::string(argv[1]).empty()) {
+		std::cerr << "Arquivo de saida nao informado." << std::endl;
 		return 1;
 	}
+	std::string outFile = argv[1];
 
 	ios_base::sync_with_stdio(false);
 
-	ifstream fin(filename);
-	if (!fin.is_open()) {
-		std::cerr << "Nao foi possivel abrir arquivo de instancia: " << filename << std::endl;
+	if (!std::cin.good()) {
+		std::cerr << "Nao foi possivel ler o arquivo de instancia pela entrada padrao." << std::endl;
 		return 1;
 	}
+	std::istream& fin = std::cin;
 	fin.imbue(locale("C"));
 
     string line;
 
-	// Saída automática baseada no nome da instância
-	string outFile = filename + ".out";
 	fileSolution.open(outFile);
 	if (!fileSolution.is_open()) {
 		std::cerr << "Nao foi possivel abrir arquivo de saida: " << outFile << std::endl;

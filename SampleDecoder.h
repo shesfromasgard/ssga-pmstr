@@ -146,8 +146,8 @@ public:
 		std::vector<Operation> operacoesRandomizadas;
 		std::vector<int> tarefasDisponiveis;
 	
-		for (auto const &[id, fila] : tarefas) {
-			tarefasDisponiveis.push_back(id);
+		for (auto const& tarefa : tarefas) {
+			tarefasDisponiveis.push_back(tarefa.first);
 		}
 	
 		std::random_device rd;
